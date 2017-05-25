@@ -39,10 +39,6 @@ class LedgersController < ApplicationController
 		
 	end
 
-	def edit
-		courier = Ledger.where(:id=>params[:id])[0]
-	end
-
 	def update			
 		courier = CourierPanel::Courier.unscope(:where).where(:id=>params[:id])[0]
 		if courier.present?
