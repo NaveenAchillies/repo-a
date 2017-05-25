@@ -1,0 +1,13 @@
+<div style="margin-top: 6%;margin-left: 10%;margin-right: 2%;" >
+<%= form_tag('/ledgers', :class=> "ledgers", method: 'post', :style => 'margin: 0px') do %>
+	<%= label_tag("amount", "Amount", :class=>'required')%>
+	<%= text_field_tag 'income[data1]', nil, :placeholder=>'Amount', :class=>'required digits'%><br/>
+
+	<%= label_tag("category", "Category", :class=>'required')%>
+	<%= text_field_tag 'income[data3]', nil, :placeholder=>'Category', :class=>'required'%><br/>
+	<%= hidden_field_tag "data", params[:id] %>
+	<br>
+	<%= submit_tag 'Save', :class => 'btn btn-primary' ,:onclick => "$('.ledgers').validate()" %>
+	<%= link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn' %>
+<% end %>
+</div>

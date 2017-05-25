@@ -1,0 +1,35 @@
+
+<div style="margin-top: 6%;margin-left: 10%;margin-right: 2%;" >
+<%= link_to "Add Income", new_income_ledger_path("income") %> <br />
+<%= link_to "Add Expenses", new_income_ledger_path("expense") %> <br />
+
+
+<a href="/ledgers.csv" type="button" target="_blank" class="btn btn-success" style="margin-right:5px;color: white !important;float: right;margin-top: 1%;" role="display">Download csv</a>
+<a href="/ledgers.pdf" type="button" target="_blank" class="btn btn-success" style="margin-right:5px;color: white !important;float: right;margin-top: 1%;" role="display">Download pdf</a>
+
+<table id="live-table" class="table table-striped table-bordered center-align font16">
+	<thead>
+	    <tr>
+	    	<th class= "col-md-2 center-align" name="number">Type</th>
+	        <th class= "col-md-2 center-align" name="number">Category</th>
+	        <th class= "col-md-2 center-align" name="tracking_code">Amount</th>
+	        <th class= "col-md-2 center-align" name="city">Created</th>
+	        <th class= "col-md-2 center-align" name="city">Destroy</th>
+	    </tr>
+	</thead>
+	<% @data.each do |data| %>
+		<tbody>
+			<td> <%= data.type %> </td>
+			<td> <%= data.data3 %> </td>
+			<td> <%= data.data1 %> </td>
+			<td> <%= data.created_at.strftime('%b %d,%Y') %> </td>
+            <td>
+                <%= link_to 'Destroy', '/ledgers/'+data.id.to_s, :class=>'btn btn-danger', :style=>'color: white !important;', :method=>:delete %>
+            </td>
+		</tbody>
+	<%end%>
+</table>
+<br/>
+<div class='header_link normal logout pull-right'>Total Income: <b><%= @total_income %></b> </div> <br/> 
+<div class='header_link normal logout pull-right'>Total Expense: <b><%= @total_expense %></b> </div> <br/>
+</div>
